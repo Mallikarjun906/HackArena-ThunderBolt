@@ -81,18 +81,18 @@ const Styles = () => (
 
 /* ─── LEFT PANEL FEATURES ────────────────────────────────────── */
 const features = [
-  { icon: <TrendingUp size={16}/>, text: "Live mandi prices across India"   },
-  { icon: <Leaf       size={16}/>, text: "AI-powered crop disease detection" },
-  { icon: <Shield     size={16}/>, text: "Govt scheme eligibility checker"   },
+  { icon: <TrendingUp size={16} />, text: "Live mandi prices across India" },
+  { icon: <Leaf size={16} />, text: "AI-powered crop disease detection" },
+  { icon: <Shield size={16} />, text: "Govt scheme eligibility checker" },
 ];
 
 /* ─── COMPONENT ──────────────────────────────────────────────── */
 const Login = () => {
-  const [email,       setEmail]       = useState("");
-  const [password,    setPassword]    = useState("");
-  const [loading,     setLoading]     = useState(false);
-  const [showPass,    setShowPass]    = useState(false);
-  const [error,       setError]       = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [showPass, setShowPass] = useState(false);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -100,7 +100,7 @@ const Login = () => {
     setLoading(true);
     setError("");
     try {
-      const res  = await axios.post("http://localhost:5001/api/auth/login", { email, password });
+      const res = await axios.post("http://localhost:5001/api/auth/login", { email, password });
       const data = res.data;
       localStorage.setItem("token", data.token);
       const roleRoutes = { farmer: "/farmer", buyer: "/buyer", dealer: "/dealer", admin: "/admin" };
@@ -129,7 +129,7 @@ const Login = () => {
         flexDirection: "column", justifyContent: "space-between",
         padding: "48px"
       }}
-      className="left-panel"
+        className="left-panel"
       >
         <style>{`@media(min-width:1024px){ .left-panel{ display:flex !important; } }`}</style>
 
@@ -143,14 +143,14 @@ const Login = () => {
           backgroundSize: "60px 60px",
           animation: "gridScroll 10s linear infinite",
           pointerEvents: "none"
-        }}/>
+        }} />
         {/* Radial glow */}
         <div style={{
           position: "absolute", bottom: "-100px", left: "-100px",
           width: 500, height: 500,
           background: "radial-gradient(circle, rgba(0,255,136,0.07) 0%, transparent 65%)",
           borderRadius: "50%", pointerEvents: "none"
-        }}/>
+        }} />
 
         {/* Logo */}
         <div style={{ position: "relative", zIndex: 2 }}>
@@ -160,7 +160,7 @@ const Login = () => {
               background: "linear-gradient(135deg, #00ff88, #00c96a)",
               display: "flex", alignItems: "center", justifyContent: "center"
             }}>
-              <Sprout size={20} color="#030a06" strokeWidth={2.5}/>
+              <Sprout size={20} color="#030a06" strokeWidth={2.5} />
             </div>
             <span style={{ fontWeight: 800, fontSize: 18, color: "#e8f5ee", letterSpacing: "-0.02em" }}>
               Smart<span style={{ color: "var(--green-glow)" }}>Agri</span>
@@ -178,14 +178,14 @@ const Login = () => {
             marginBottom: 32, animation: "float 5s ease-in-out infinite",
             color: "var(--green-glow)"
           }}>
-            <Sprout size={32}/>
+            <Sprout size={32} />
           </div>
 
           <h2 style={{
             fontSize: 36, fontWeight: 800, letterSpacing: "-0.04em",
             lineHeight: 1.15, marginBottom: 16, color: "#e8f5ee"
           }}>
-            Grow smarter.<br/>
+            Grow smarter.<br />
             <span style={{
               background: "linear-gradient(90deg, #00ff88, #00c96a, #d4a843, #00ff88)",
               backgroundSize: "200% auto",
@@ -227,7 +227,7 @@ const Login = () => {
           position: "relative", zIndex: 2,
           display: "flex", gap: 32
         }}>
-          {[["2.4L+","Farmers"],["340+","Dealers"],["98%","Satisfaction"]].map(([val, lbl]) => (
+          {[["2.4L+", "Farmers"], ["340+", "Dealers"], ["98%", "Satisfaction"]].map(([val, lbl]) => (
             <div key={lbl}>
               <div style={{ fontSize: 22, fontWeight: 800, color: "var(--green-glow)" }}>{val}</div>
               <div style={{ fontSize: 12, color: "var(--text-muted)", marginTop: 2, letterSpacing: "0.05em", textTransform: "uppercase" }}>{lbl}</div>
@@ -247,12 +247,12 @@ const Login = () => {
           width: 400, height: 400,
           background: "radial-gradient(circle, rgba(0,255,136,0.05) 0%, transparent 65%)",
           borderRadius: "50%", pointerEvents: "none"
-        }}/>
+        }} />
 
         <motion.div
           initial={{ opacity: 0, y: 32 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.22,1,0.36,1] }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           style={{ width: "100%", maxWidth: 420, position: "relative", zIndex: 2 }}
         >
           {/* Mobile logo */}
@@ -264,7 +264,7 @@ const Login = () => {
                 background: "linear-gradient(135deg, #00ff88, #00c96a)",
                 display: "flex", alignItems: "center", justifyContent: "center"
               }}>
-                <Sprout size={18} color="#030a06" strokeWidth={2.5}/>
+                <Sprout size={18} color="#030a06" strokeWidth={2.5} />
               </div>
               <span style={{ fontWeight: 800, fontSize: 17, color: "#e8f5ee" }}>
                 Smart<span style={{ color: "var(--green-glow)" }}>Agri</span>
@@ -295,7 +295,7 @@ const Login = () => {
                   position: "absolute", left: 14, top: "50%", transform: "translateY(-50%)",
                   color: "var(--text-muted)", pointerEvents: "none"
                 }}>
-                  <Mail size={17}/>
+                  <Mail size={17} />
                 </div>
                 <input
                   type="email"
@@ -314,7 +314,7 @@ const Login = () => {
                   position: "absolute", left: 14, top: "50%", transform: "translateY(-50%)",
                   color: "var(--text-muted)", pointerEvents: "none"
                 }}>
-                  <Lock size={17}/>
+                  <Lock size={17} />
                 </div>
                 <input
                   type={showPass ? "text" : "password"}
@@ -335,7 +335,7 @@ const Login = () => {
                     color: "var(--text-muted)", padding: 0, display: "flex"
                   }}
                 >
-                  {showPass ? <EyeOff size={17}/> : <Eye size={17}/>}
+                  {showPass ? <EyeOff size={17} /> : <Eye size={17} />}
                 </button>
               </div>
 
@@ -366,12 +366,12 @@ const Login = () => {
                       border: "2px solid rgba(3,10,6,0.3)", borderTop: "2px solid #030a06",
                       borderRadius: "50%", animation: "spin 0.8s linear infinite",
                       display: "inline-block"
-                    }}/>
+                    }} />
                     Signing in…
                   </span>
                 ) : (
                   <span style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
-                    Sign In <ArrowRight size={17}/>
+                    Sign In <ArrowRight size={17} />
                   </span>
                 )}
               </button>
@@ -398,7 +398,7 @@ const Login = () => {
           }}>
             <p style={{ fontSize: 12, color: "var(--text-muted)", letterSpacing: "0.05em", textTransform: "uppercase", marginBottom: 10, fontWeight: 600 }}>Login as</p>
             <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-              {["Farmer","Buyer","Dealer","Admin"].map(role => (
+              {["Farmer", "Buyer", "Dealer", "Admin"].map(role => (
                 <span key={role} style={{
                   fontSize: 12, padding: "4px 12px", borderRadius: 100,
                   background: "rgba(0,255,136,0.08)", border: "1px solid rgba(0,255,136,0.18)",
