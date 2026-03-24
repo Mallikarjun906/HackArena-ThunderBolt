@@ -449,11 +449,10 @@ export default function App() {
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-semibold border transition-all duration-200 ${
-                selectedCategory === cat
+              className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-semibold border transition-all duration-200 ${selectedCategory === cat
                   ? "bg-green-700 text-white border-green-700 shadow-md"
                   : "bg-white text-gray-600 border-gray-200 hover:border-green-400 hover:text-green-700"
-              }`}
+                }`}
             >
               {cat}
             </button>

@@ -9,15 +9,15 @@ const BASE_URL = "http://localhost:5001/api";
    CONSTANTS
 ═══════════════════════════════════════════════════════════════ */
 const CATS = ["Seeds", "Fertilizers", "Pesticides"];
-const CAT_EMOJI = { Seeds: "🌱", Fertilizers: "🧪", Pesticides: "🧴"};
+const CAT_EMOJI = { Seeds: "🌱", Fertilizers: "🧪", Pesticides: "🧴" };
 const ORDER_STATUSES = ["Pending", "Accepted", "Shipped", "Delivered", "Cancelled"];
 
 const STATUS_META = {
-  Pending:   { color: "#f0b429", bg: "rgba(240,180,41,0.10)",  border: "rgba(240,180,41,0.25)",  icon: "⏳" },
-  Accepted:  { color: "#60aef0", bg: "rgba(96,174,240,0.10)",  border: "rgba(96,174,240,0.25)",  icon: "✅" },
-  Shipped:   { color: "#a888f5", bg: "rgba(168,136,245,0.10)", border: "rgba(168,136,245,0.25)", icon: "🚚" },
+  Pending: { color: "#f0b429", bg: "rgba(240,180,41,0.10)", border: "rgba(240,180,41,0.25)", icon: "⏳" },
+  Accepted: { color: "#60aef0", bg: "rgba(96,174,240,0.10)", border: "rgba(96,174,240,0.25)", icon: "✅" },
+  Shipped: { color: "#a888f5", bg: "rgba(168,136,245,0.10)", border: "rgba(168,136,245,0.25)", icon: "🚚" },
   Delivered: { color: "#6bcb8b", bg: "rgba(107,203,139,0.10)", border: "rgba(107,203,139,0.25)", icon: "📦" },
-  Cancelled: { color: "#f07060", bg: "rgba(240,112,96,0.10)",  border: "rgba(240,112,96,0.25)",  icon: "✕" },
+  Cancelled: { color: "#f07060", bg: "rgba(240,112,96,0.10)", border: "rgba(240,112,96,0.25)", icon: "✕" },
 };
 
 /* ═══════════════════════════════════════════════════════════════
@@ -568,33 +568,33 @@ export default function DealerDashboard() {
      ORDER STATUS UPDATE
   ══════════════════════════════════════ */
   async function updateOrderStatus(orderId, status) {
-  setUpdatingOrder(orderId);
+    setUpdatingOrder(orderId);
 
-  try {
-    const res = await fetch(`${apiBase}/orders/${orderId}/status`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ status }),
-    });
+    try {
+      const res = await fetch(`${apiBase}/orders/${orderId}/status`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ status }),
+      });
 
-    if (!res.ok) throw new Error("HTTP " + res.status);
+      if (!res.ok) throw new Error("HTTP " + res.status);
 
-    toast(`Order status → ${status}`, "success");
+      toast(`Order status → ${status}`, "success");
 
-    setOrders((p) =>
-      p.map((o) => (o._id === orderId ? { ...o, status } : o))
-    );
+      setOrders((p) =>
+        p.map((o) => (o._id === orderId ? { ...o, status } : o))
+      );
 
-    loadDash();
+      loadDash();
 
-  } catch (err) {
-    toast(err.message, "error");
-  } finally {
-    setUpdatingOrder(null);
+    } catch (err) {
+      toast(err.message, "error");
+    } finally {
+      setUpdatingOrder(null);
+    }
   }
-}
 
   /* ══════════════════════════════════════
      SAVE API URL
@@ -728,7 +728,7 @@ export default function DealerDashboard() {
       {/* Quick links */}
       <div style={{ display: "flex", gap: 12, marginTop: 4 }}>
         <button className="btn btn-green" onClick={() => { setView("products"); openAdd(); }}>
-          <svg width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          <svg width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
           Add Product
         </button>
         <button className="btn btn-ghost" onClick={() => setView("orders")}>
@@ -744,7 +744,7 @@ export default function DealerDashboard() {
       <div className="sec-hdr">
         <span className="sec-title">Product Catalog</span>
         <button className="btn btn-green btn-sm" onClick={openAdd}>
-          <svg width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          <svg width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
           Add Product
         </button>
       </div>
@@ -925,30 +925,30 @@ export default function DealerDashboard() {
           <nav className="sb-nav">
             <div className="sb-section">Overview</div>
             <button className={`sb-btn${view === "dashboard" ? " on" : ""}`} onClick={() => setView("dashboard")}>
-              <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+              <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" /><rect x="14" y="3" width="7" height="7" /><rect x="3" y="14" width="7" height="7" /><rect x="14" y="14" width="7" height="7" /></svg>
               Dashboard
             </button>
 
             <div className="sb-section" style={{ marginTop: 8 }}>Catalog</div>
             <button className={`sb-btn${view === "products" ? " on" : ""}`} onClick={() => setView("products")}>
-              <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+              <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" /></svg>
               Products
             </button>
             <button className={`sb-btn${view === "products" ? "" : ""}`} onClick={() => { setView("products"); openAdd(); }}>
-              <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
               Add Product
             </button>
 
             <div className="sb-section" style={{ marginTop: 8 }}>Orders</div>
             <button className={`sb-btn${view === "orders" ? " on" : ""}`} onClick={() => setView("orders")}>
-              <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+              <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" /><line x1="3" y1="6" x2="21" y2="6" /><path d="M16 10a4 4 0 0 1-8 0" /></svg>
               All Orders
               {pendingCount > 0 && <span className="sb-cnt">{pendingCount}</span>}
             </button>
 
             <div className="sb-section" style={{ marginTop: 8 }}>Settings</div>
             <button className="sb-btn" onClick={() => { setShowBanner(true); setApiInput(apiBase); }}>
-              <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93A10 10 0 0 0 4.93 19.07"/><path d="M19.07 19.07A10 10 0 0 0 4.93 4.93"/></svg>
+              <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" /><path d="M19.07 4.93A10 10 0 0 0 4.93 19.07" /><path d="M19.07 19.07A10 10 0 0 0 4.93 4.93" /></svg>
               API Config
             </button>
           </nav>
@@ -969,7 +969,7 @@ export default function DealerDashboard() {
               {view === "orders" && "Orders"}
             </span>
             <div className="searchbox">
-              <svg width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+              <svg width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8" /><path d="M21 21l-4.35-4.35" /></svg>
               <input
                 placeholder={view === "orders" ? "Search orders, farmers…" : "Search products…"}
                 value={view === "orders" ? ordSearch : prodSearch}
@@ -978,7 +978,7 @@ export default function DealerDashboard() {
             </div>
             {view === "products" && (
               <button className="btn btn-green btn-sm" onClick={openAdd}>
-                <svg width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                <svg width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
                 Add Product
               </button>
             )}

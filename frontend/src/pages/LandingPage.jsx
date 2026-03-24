@@ -108,25 +108,25 @@ const FontLink = () => (
 
 /* ─── DATA ────────────────────────────────────────────────────── */
 const marketRates = [
-  { crop: "Wheat",   price: "₹2,275", change: "+2.3%", up: true,  icon: "🌾" },
-  { crop: "Rice",    price: "₹3,850", change: "+1.8%", up: true,  icon: "🍚" },
-  { crop: "Cotton",  price: "₹6,380", change: "-0.5%", up: false, icon: "🌿" },
-  { crop: "Soybean", price: "₹4,600", change: "+3.1%", up: true,  icon: "🫘" },
-  { crop: "Maize",   price: "₹1,940", change: "+0.9%", up: true,  icon: "🌽" },
+  { crop: "Wheat", price: "₹2,275", change: "+2.3%", up: true, icon: "🌾" },
+  { crop: "Rice", price: "₹3,850", change: "+1.8%", up: true, icon: "🍚" },
+  { crop: "Cotton", price: "₹6,380", change: "-0.5%", up: false, icon: "🌿" },
+  { crop: "Soybean", price: "₹4,600", change: "+3.1%", up: true, icon: "🫘" },
+  { crop: "Maize", price: "₹1,940", change: "+0.9%", up: true, icon: "🌽" },
   { crop: "Mustard", price: "₹5,200", change: "-1.2%", up: false, icon: "🌻" },
 ];
 
 const schemes = [
-  { title: "PM-KISAN",          desc: "₹6000 yearly income support directly to farmers",  icon: <Shield size={22}/>,    color: "#00ff88" },
-  { title: "Crop Insurance",    desc: "Protection against drought, flood & market losses", icon: <CheckCircle size={22}/>,color: "#d4a843" },
-  { title: "Kisan Credit Card", desc: "Low-interest loans up to ₹3 lakh for farm needs", icon: <CreditCard size={22}/>,color: "#00c9ff" },
+  { title: "PM-KISAN", desc: "₹6000 yearly income support directly to farmers", icon: <Shield size={22} />, color: "#00ff88" },
+  { title: "Crop Insurance", desc: "Protection against drought, flood & market losses", icon: <CheckCircle size={22} />, color: "#d4a843" },
+  { title: "Kisan Credit Card", desc: "Low-interest loans up to ₹3 lakh for farm needs", icon: <CreditCard size={22} />, color: "#00c9ff" },
 ];
 
 const stats = [
   { val: "2.4L+", label: "Registered Farmers" },
-  { val: "₹18Cr", label: "Transactions Done"  },
-  { val: "340+",  label: "Verified Sellers"   },
-  { val: "98%",   label: "Satisfaction Rate"  },
+  { val: "₹18Cr", label: "Transactions Done" },
+  { val: "340+", label: "Verified Sellers" },
+  { val: "98%", label: "Satisfaction Rate" },
 ];
 
 /* ─── SUB-COMPONENTS ──────────────────────────────────────────── */
@@ -144,14 +144,14 @@ const GridBg = () => (
       `,
       backgroundSize: "60px 60px",
       animation: "gridScroll 8s linear infinite"
-    }}/>
+    }} />
     {/* Radial spotlight */}
     <div style={{
       position: "absolute", top: "20%", left: "50%", transform: "translateX(-50%)",
       width: "700px", height: "700px",
       background: "radial-gradient(circle, rgba(0,255,136,0.07) 0%, transparent 70%)",
       borderRadius: "50%"
-    }}/>
+    }} />
   </div>
 );
 
@@ -159,7 +159,7 @@ const GridBg = () => (
 const Orbs = () => (
   <>
     {[
-      { top: "10%", left: "5%",  size: 300, color: "rgba(0,255,136,0.06)", delay: 0 },
+      { top: "10%", left: "5%", size: 300, color: "rgba(0,255,136,0.06)", delay: 0 },
       { top: "60%", right: "5%", size: 400, color: "rgba(0,201,106,0.05)", delay: 2 },
       { top: "40%", left: "40%", size: 200, color: "rgba(212,168,67,0.04)", delay: 1 },
     ].map((o, i) => (
@@ -173,7 +173,7 @@ const Orbs = () => (
         animationDelay: `${o.delay}s`,
         pointerEvents: "none",
         zIndex: 0
-      }}/>
+      }} />
     ))}
   </>
 );
@@ -188,7 +188,7 @@ const Reveal = ({ children, delay = 0, direction = "up" }) => {
       y: direction === "up" ? 50 : direction === "down" ? -50 : 0,
       x: direction === "left" ? 50 : direction === "right" ? -50 : 0,
     },
-    visible: { opacity: 1, y: 0, x: 0, transition: { duration: 0.7, delay, ease: [0.22,1,0.36,1] } }
+    visible: { opacity: 1, y: 0, x: 0, transition: { duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] } }
   };
   return (
     <motion.div ref={ref} variants={variants} initial="hidden" animate={inView ? "visible" : "hidden"}>
@@ -229,18 +229,18 @@ export default function LandingPage() {
   const navigate = useNavigate();
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
-  const heroY  = useTransform(scrollYProgress, [0,1], ["0%", "30%"]);
-  const heroO  = useTransform(scrollYProgress, [0,0.8], [1, 0]);
+  const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const heroO = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   /* State */
-  const [fertilizers,        setFertilizers]        = useState([]);
+  const [fertilizers, setFertilizers] = useState([]);
   const [loadingFertilizers, setLoadingFertilizers] = useState(false);
-  const [selectedImage,      setSelectedImage]      = useState(null);
-  const [imageFile,          setImageFile]          = useState(null);
-  const [analyzing,          setAnalyzing]          = useState(false);
-  const [result,             setResult]             = useState(null);
-  const [menuOpen,           setMenuOpen]           = useState(false);
-  const [activeScheme,       setActiveScheme]       = useState(null);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [imageFile, setImageFile] = useState(null);
+  const [analyzing, setAnalyzing] = useState(false);
+  const [result, setResult] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [activeScheme, setActiveScheme] = useState(null);
 
   /* Fetch fertilizers */
   useEffect(() => { fetchFertilizers(); }, []);
@@ -291,7 +291,7 @@ export default function LandingPage() {
       <motion.header
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.7, ease: [0.22,1,0.36,1] }}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         style={{
           position: "sticky", top: 0, zIndex: 100,
           background: "rgba(3,10,6,0.85)",
@@ -311,7 +311,7 @@ export default function LandingPage() {
               background: "linear-gradient(135deg, #00ff88, #00c96a)",
               display: "flex", alignItems: "center", justifyContent: "center"
             }}>
-              <Sprout size={20} color="#030a06" strokeWidth={2.5}/>
+              <Sprout size={20} color="#030a06" strokeWidth={2.5} />
             </div>
             <span style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 800, fontSize: 18, color: "var(--text-main)", letterSpacing: "-0.02em" }}>
               Smart<span style={{ color: "var(--green-glow)" }}>Agri</span>
@@ -320,23 +320,23 @@ export default function LandingPage() {
 
           {/* Nav links – desktop */}
           <nav style={{ display: "flex", gap: 36, alignItems: "center" }}>
-            {[["#market","Market"],["#fertilizers","Products"],["#schemes","Schemes"],["#ai-detect","AI Detect"]].map(([href,label]) => (
+            {[["#market", "Market"], ["#fertilizers", "Products"], ["#schemes", "Schemes"], ["#ai-detect", "AI Detect"]].map(([href, label]) => (
               <a key={href} href={href} style={{
                 color: "var(--text-muted)", fontSize: 14, fontWeight: 500,
                 textDecoration: "none", letterSpacing: "0.02em",
                 transition: "color 0.2s"
               }}
-              onMouseEnter={e=>e.target.style.color="var(--green-glow)"}
-              onMouseLeave={e=>e.target.style.color="var(--text-muted)"}
+                onMouseEnter={e => e.target.style.color = "var(--green-glow)"}
+                onMouseLeave={e => e.target.style.color = "var(--text-muted)"}
               >{label}</a>
             ))}
-            <button onClick={()=>navigate("/government-schemes")} style={{
+            <button onClick={() => navigate("/government-schemes")} style={{
               background: "none", border: "none", cursor: "pointer",
               color: "var(--text-muted)", fontSize: 14, fontWeight: 500, letterSpacing: "0.02em",
               transition: "color 0.2s", padding: 0
             }}
-            onMouseEnter={e=>e.target.style.color="var(--green-glow)"}
-            onMouseLeave={e=>e.target.style.color="var(--text-muted)"}
+              onMouseEnter={e => e.target.style.color = "var(--green-glow)"}
+              onMouseLeave={e => e.target.style.color = "var(--text-muted)"}
             >All Schemes</button>
           </nav>
 
@@ -348,8 +348,8 @@ export default function LandingPage() {
               textDecoration: "none", transition: "all 0.2s",
               background: "transparent"
             }}
-            onMouseEnter={e=>{e.currentTarget.style.borderColor="rgba(0,255,136,0.6)";e.currentTarget.style.background="rgba(0,255,136,0.06)"}}
-            onMouseLeave={e=>{e.currentTarget.style.borderColor="rgba(0,255,136,0.25)";e.currentTarget.style.background="transparent"}}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = "rgba(0,255,136,0.6)"; e.currentTarget.style.background = "rgba(0,255,136,0.06)" }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(0,255,136,0.25)"; e.currentTarget.style.background = "transparent" }}
             >Log in</Link>
             <Link to="/register" className="btn-primary" style={{
               padding: "9px 22px", borderRadius: 8, fontSize: 14,
@@ -390,7 +390,7 @@ export default function LandingPage() {
               background: "var(--green-glow)",
               boxShadow: "0 0 8px var(--green-glow)",
               display: "inline-block", animation: "pulse-ring 1.5s ease-out infinite"
-            }}/>
+            }} />
             Now live across 14 Indian states
           </motion.div>
 
@@ -398,7 +398,7 @@ export default function LandingPage() {
           <motion.h1
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.9, ease: [0.22,1,0.36,1] }}
+            transition={{ delay: 0.3, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             style={{
               fontSize: "clamp(48px, 7vw, 96px)",
               fontWeight: 900,
@@ -442,7 +442,7 @@ export default function LandingPage() {
               padding: "14px 32px", borderRadius: 12, fontSize: 16,
               display: "inline-flex", alignItems: "center", gap: 8, textDecoration: "none"
             }}>
-              <Zap size={18}/> Start for Free
+              <Zap size={18} /> Start for Free
             </Link>
             <a href="#market" style={{
               padding: "14px 32px", borderRadius: 12, fontSize: 16, fontWeight: 500,
@@ -450,20 +450,20 @@ export default function LandingPage() {
               textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 8,
               transition: "all 0.25s"
             }}
-            onMouseEnter={e=>{e.currentTarget.style.borderColor="rgba(0,255,136,0.5)";e.currentTarget.style.background="rgba(0,255,136,0.05)"}}
-            onMouseLeave={e=>{e.currentTarget.style.borderColor="rgba(0,255,136,0.25)";e.currentTarget.style.background="transparent"}}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = "rgba(0,255,136,0.5)"; e.currentTarget.style.background = "rgba(0,255,136,0.05)" }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(0,255,136,0.25)"; e.currentTarget.style.background = "transparent" }}
             >
-              <Globe size={18}/> Explore Markets
+              <Globe size={18} /> Explore Markets
             </a>
           </motion.div>
 
           {/* Scroll cue */}
           <motion.div
-            animate={{ y: [0,8,0] }}
+            animate={{ y: [0, 8, 0] }}
             transition={{ repeat: Infinity, duration: 2 }}
             style={{ marginTop: 64, color: "var(--text-muted)" }}
           >
-            <ChevronDown size={24}/>
+            <ChevronDown size={24} />
           </motion.div>
         </motion.div>
       </section>
@@ -518,7 +518,7 @@ export default function LandingPage() {
                   background: item.up
                     ? "linear-gradient(90deg, transparent, rgba(0,255,136,0.6), transparent)"
                     : "linear-gradient(90deg, transparent, rgba(255,85,85,0.5), transparent)"
-                }}/>
+                }} />
 
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
                   <div>
@@ -534,7 +534,7 @@ export default function LandingPage() {
                       border: `1px solid ${item.up ? "rgba(0,255,136,0.3)" : "rgba(255,85,85,0.3)"}`,
                       borderRadius: 100, padding: "3px 10px", marginTop: 6
                     }}>
-                      {item.up ? <TrendingUp size={12} color="#00ff88"/> : <TrendingDown size={12} color="#ff5555"/>}
+                      {item.up ? <TrendingUp size={12} color="#00ff88" /> : <TrendingDown size={12} color="#ff5555" />}
                       <span style={{ fontSize: 13, fontWeight: 600, color: item.up ? "#00ff88" : "#ff5555" }}>{item.change}</span>
                     </div>
                   </div>
@@ -561,7 +561,7 @@ export default function LandingPage() {
                 width: 40, height: 40, border: "2px solid rgba(0,255,136,0.2)",
                 borderTop: "2px solid var(--green-glow)", borderRadius: "50%",
                 animation: "spin 1s linear infinite", margin: "0 auto"
-              }}/>
+              }} />
               <p style={{ marginTop: 16, color: "var(--text-muted)" }}>Loading products…</p>
               <style>{`@keyframes spin{to{transform:rotate(360deg)}}`}</style>
             </div>
@@ -574,13 +574,13 @@ export default function LandingPage() {
                 { name: "NPK Complex 10:26:26", description: "Balanced nutrient formula for kharif crops", price: 850, badge: "Best Seller" },
                 { name: "Urea 46% N", description: "High nitrogen content for rapid vegetative growth", price: 320, badge: "Low Stock" },
                 { name: "DAP Fertilizer", description: "Diammonium phosphate — root development booster", price: 1350, badge: "New" },
-              ].map((f, i) => <FertilizerCard key={i} f={f} i={i} navigate={navigate}/>)}
+              ].map((f, i) => <FertilizerCard key={i} f={f} i={i} navigate={navigate} />)}
             </div>
           )}
 
           {fertilizers.length > 0 && (
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 24 }}>
-              {fertilizers.map((f, i) => <FertilizerCard key={f._id} f={f} i={i} navigate={navigate}/>)}
+              {fertilizers.map((f, i) => <FertilizerCard key={f._id} f={f} i={i} navigate={navigate} />)}
             </div>
           )}
         </div>
@@ -621,7 +621,7 @@ export default function LandingPage() {
                   <h3 style={{ fontSize: 22, fontWeight: 800, marginBottom: 12, letterSpacing: "-0.02em" }}>{s.title}</h3>
                   <p style={{ color: "var(--text-muted)", lineHeight: 1.7, fontSize: 15 }}>{s.desc}</p>
                   <div style={{ marginTop: 28, display: "flex", alignItems: "center", gap: 6, color: s.color, fontSize: 14, fontWeight: 600 }}>
-                    Learn more <ArrowRight size={14}/>
+                    Learn more <ArrowRight size={14} />
                   </div>
                 </motion.div>
               </Reveal>
@@ -660,7 +660,7 @@ export default function LandingPage() {
                   }}
                 >
                   {selectedImage ? (
-                    <img src={selectedImage} alt="Crop" style={{ maxHeight: 220, borderRadius: 12, objectFit: "cover", width: "100%" }}/>
+                    <img src={selectedImage} alt="Crop" style={{ maxHeight: 220, borderRadius: 12, objectFit: "cover", width: "100%" }} />
                   ) : (
                     <>
                       <div style={{
@@ -669,13 +669,13 @@ export default function LandingPage() {
                         display: "flex", alignItems: "center", justifyContent: "center",
                         marginBottom: 20, color: "var(--green-glow)"
                       }}>
-                        <Upload size={28}/>
+                        <Upload size={28} />
                       </div>
                       <p style={{ fontWeight: 600, marginBottom: 8 }}>Drop your crop image here</p>
                       <p style={{ color: "var(--text-muted)", fontSize: 13 }}>PNG, JPG or WEBP up to 10MB</p>
                     </>
                   )}
-                  <input id="cropImg" type="file" accept="image/*" onChange={handleImageUpload} style={{ display: "none" }}/>
+                  <input id="cropImg" type="file" accept="image/*" onChange={handleImageUpload} style={{ display: "none" }} />
                 </motion.div>
               </label>
 
@@ -706,7 +706,7 @@ export default function LandingPage() {
                 <AnimatePresence mode="wait">
                   {!result && !analyzing && (
                     <motion.div key="idle" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} style={{ textAlign: "center", color: "var(--text-muted)" }}>
-                      <Leaf size={40} style={{ margin: "0 auto 16px", opacity: 0.3 }}/>
+                      <Leaf size={40} style={{ margin: "0 auto 16px", opacity: 0.3 }} />
                       <p>Results will appear here after analysis</p>
                     </motion.div>
                   )}
@@ -716,7 +716,7 @@ export default function LandingPage() {
                         width: 60, height: 60, border: "3px solid rgba(0,255,136,0.15)",
                         borderTop: "3px solid var(--green-glow)", borderRadius: "50%",
                         animation: "spin 1s linear infinite", margin: "0 auto 20px"
-                      }}/>
+                      }} />
                       <p style={{ color: "var(--text-muted)" }}>Running AI model…</p>
                     </motion.div>
                   )}
@@ -727,7 +727,7 @@ export default function LandingPage() {
                         background: "rgba(0,255,136,0.1)", border: "1px solid rgba(0,255,136,0.25)",
                         borderRadius: 100, padding: "4px 14px", fontSize: 13, color: "var(--green-glow)"
                       }}>
-                        <CheckCircle size={14}/> Analysis Complete
+                        <CheckCircle size={14} /> Analysis Complete
                       </div>
                       <h3 style={{ fontSize: 26, fontWeight: 800, marginBottom: 6, color: "#ff8c5a" }}>{result.disease}</h3>
                       {result.confidence && <p style={{ color: "var(--text-muted)", fontSize: 13, marginBottom: 20 }}>Confidence: <span style={{ color: "var(--green-glow)" }}>{result.confidence}</span></p>}
@@ -749,7 +749,7 @@ export default function LandingPage() {
         <div style={{ position: "relative", zIndex: 2 }}>
           <Reveal>
             <h2 style={{ fontSize: "clamp(36px, 5vw, 64px)", fontWeight: 900, letterSpacing: "-0.04em", lineHeight: 1.1, marginBottom: 24 }}>
-              Ready to transform<br/>
+              Ready to transform<br />
               <span style={{ color: "var(--green-glow)" }} className="glow-text">your harvest?</span>
             </h2>
             <p style={{ color: "var(--text-muted)", fontSize: 18, marginBottom: 40, maxWidth: 500, margin: "0 auto 40px" }}>
@@ -759,7 +759,7 @@ export default function LandingPage() {
               padding: "16px 40px", borderRadius: 14, fontSize: 18,
               display: "inline-flex", alignItems: "center", gap: 10, textDecoration: "none"
             }}>
-              <Star size={18}/> Get Started Free
+              <Star size={18} /> Get Started Free
             </Link>
           </Reveal>
         </div>
@@ -780,7 +780,7 @@ export default function LandingPage() {
                   background: "linear-gradient(135deg, #00ff88, #00c96a)",
                   display: "flex", alignItems: "center", justifyContent: "center"
                 }}>
-                  <Sprout size={18} color="#030a06" strokeWidth={2.5}/>
+                  <Sprout size={18} color="#030a06" strokeWidth={2.5} />
                 </div>
                 <span style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 800, fontSize: 17 }}>
                   Smart<span style={{ color: "var(--green-glow)" }}>Agri</span>
@@ -792,7 +792,7 @@ export default function LandingPage() {
               <div style={{ display: "flex", gap: 16, marginTop: 20 }}>
                 {[[Phone, "1800-000-000"], [Mail, "support@agri.com"]].map(([Icon, label], i) => (
                   <span key={i} style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--text-muted)", fontSize: 13 }}>
-                    <Icon size={14} color="var(--green-glow)"/> {label}
+                    <Icon size={14} color="var(--green-glow)" /> {label}
                   </span>
                 ))}
               </div>
@@ -801,8 +801,8 @@ export default function LandingPage() {
             {/* Links */}
             {[
               ["Platform", ["Market Rates", "Buy Fertilizers", "Sell Crops", "AI Detection"]],
-              ["Schemes",  ["PM-KISAN", "Crop Insurance", "Kisan Credit Card", "Soil Health Card"]],
-              ["Company",  ["About Us", "Blog", "Careers", "Contact"]],
+              ["Schemes", ["PM-KISAN", "Crop Insurance", "Kisan Credit Card", "Soil Health Card"]],
+              ["Company", ["About Us", "Blog", "Careers", "Contact"]],
             ].map(([heading, links]) => (
               <div key={heading}>
                 <h4 style={{ fontWeight: 700, fontSize: 13, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--text-muted)", marginBottom: 20 }}>{heading}</h4>
@@ -810,8 +810,8 @@ export default function LandingPage() {
                   {links.map(l => (
                     <li key={l} style={{ marginBottom: 12 }}>
                       <a href="#" style={{ color: "var(--text-main)", fontSize: 14, textDecoration: "none", opacity: 0.7, transition: "opacity 0.2s" }}
-                        onMouseEnter={e=>e.target.style.opacity=1}
-                        onMouseLeave={e=>e.target.style.opacity=0.7}
+                        onMouseEnter={e => e.target.style.opacity = 1}
+                        onMouseLeave={e => e.target.style.opacity = 0.7}
                       >{l}</a>
                     </li>
                   ))}
@@ -856,7 +856,7 @@ function FertilizerCard({ f, i, navigate }) {
         }}>
           {f.image ? (
             <img src={`http://localhost:5001${f.image}`} alt={f.name}
-              style={{ width: "100%", height: "100%", objectFit: "cover" }}/>
+              style={{ width: "100%", height: "100%", objectFit: "cover" }} />
           ) : (
             <div style={{
               width: 80, height: 80, borderRadius: 20,
@@ -864,7 +864,7 @@ function FertilizerCard({ f, i, navigate }) {
               display: "flex", alignItems: "center", justifyContent: "center",
               color: "var(--green-glow)"
             }}>
-              <FlaskConical size={36}/>
+              <FlaskConical size={36} />
             </div>
           )}
           {f.badge && (

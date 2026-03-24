@@ -105,19 +105,19 @@ const Styles = () => (
 
 /* ─── ROLES ──────────────────────────────────────────────────── */
 const roles = [
-  { value: "farmer", label: "Farmer",  icon: Wheat,        desc: "Sell your harvest"    },
-  { value: "buyer",  label: "Buyer",   icon: ShoppingCart, desc: "Buy fresh produce"    },
-  { value: "dealer", label: "Dealer",  icon: Store,        desc: "Trade & distribute"   },
+  { value: "farmer", label: "Farmer", icon: Wheat, desc: "Sell your harvest" },
+  { value: "buyer", label: "Buyer", icon: ShoppingCart, desc: "Buy fresh produce" },
+  { value: "dealer", label: "Dealer", icon: Store, desc: "Trade & distribute" },
 ];
 
 /* ─── PASSWORD STRENGTH ──────────────────────────────────────── */
 const getStrength = (pw) => {
   if (!pw) return 0;
   let s = 0;
-  if (pw.length >= 8)              s++;
-  if (/[A-Z]/.test(pw))           s++;
-  if (/[0-9]/.test(pw))           s++;
-  if (/[^A-Za-z0-9]/.test(pw))   s++;
+  if (pw.length >= 8) s++;
+  if (/[A-Z]/.test(pw)) s++;
+  if (/[0-9]/.test(pw)) s++;
+  if (/[^A-Za-z0-9]/.test(pw)) s++;
   return s;
 };
 const strengthLabel = ["", "Weak", "Fair", "Good", "Strong"];
@@ -125,21 +125,21 @@ const strengthColor = ["", "#ff5555", "#d4a843", "#00c96a", "#00ff88"];
 
 /* ─── LEFT PANEL STEPS ───────────────────────────────────────── */
 const steps = [
-  { n: "01", title: "Create your account",    desc: "Fill in your name, email & password"   },
-  { n: "02", title: "Choose your role",       desc: "Farmer, buyer or dealer"                },
-  { n: "03", title: "Verify your email",      desc: "Enter the OTP we send you"              },
-  { n: "04", title: "Start trading",          desc: "Access live prices & AI tools instantly" },
+  { n: "01", title: "Create your account", desc: "Fill in your name, email & password" },
+  { n: "02", title: "Choose your role", desc: "Farmer, buyer or dealer" },
+  { n: "03", title: "Verify your email", desc: "Enter the OTP we send you" },
+  { n: "04", title: "Start trading", desc: "Access live prices & AI tools instantly" },
 ];
 
 /* ─── COMPONENT ──────────────────────────────────────────────── */
 const Register = () => {
-  const [name,     setName]     = useState("");
-  const [email,    setEmail]    = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [role,     setRole]     = useState("farmer");
-  const [loading,  setLoading]  = useState(false);
+  const [role, setRole] = useState("farmer");
+  const [loading, setLoading] = useState(false);
   const [showPass, setShowPass] = useState(false);
-  const [error,    setError]    = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const strength = getStrength(password);
@@ -185,14 +185,14 @@ const Register = () => {
           backgroundSize: "60px 60px",
           animation: "gridScroll 10s linear infinite",
           pointerEvents: "none"
-        }}/>
+        }} />
         {/* Glow orb */}
         <div style={{
           position: "absolute", top: "-60px", right: "-60px",
           width: 400, height: 400,
           background: "radial-gradient(circle, rgba(0,255,136,0.07) 0%, transparent 65%)",
           borderRadius: "50%", pointerEvents: "none"
-        }}/>
+        }} />
 
         {/* Logo */}
         <div style={{ position: "relative", zIndex: 2 }}>
@@ -202,7 +202,7 @@ const Register = () => {
               background: "linear-gradient(135deg, #00ff88, #00c96a)",
               display: "flex", alignItems: "center", justifyContent: "center"
             }}>
-              <Sprout size={20} color="#030a06" strokeWidth={2.5}/>
+              <Sprout size={20} color="#030a06" strokeWidth={2.5} />
             </div>
             <span style={{ fontWeight: 800, fontSize: 18, color: "#e8f5ee", letterSpacing: "-0.02em" }}>
               Smart<span style={{ color: "var(--green-glow)" }}>Agri</span>
@@ -219,14 +219,14 @@ const Register = () => {
             marginBottom: 32, animation: "float 5s ease-in-out infinite",
             color: "var(--green-glow)"
           }}>
-            <Sprout size={32}/>
+            <Sprout size={32} />
           </div>
 
           <h2 style={{
             fontSize: 34, fontWeight: 800, letterSpacing: "-0.04em",
             lineHeight: 1.15, marginBottom: 14, color: "#e8f5ee"
           }}>
-            Join the future<br/>
+            Join the future<br />
             <span style={{
               background: "linear-gradient(90deg, #00ff88, #00c96a, #d4a843, #00ff88)",
               backgroundSize: "200% auto",
@@ -282,7 +282,7 @@ const Register = () => {
           width: 400, height: 400,
           background: "radial-gradient(circle, rgba(0,255,136,0.05) 0%, transparent 65%)",
           borderRadius: "50%", pointerEvents: "none"
-        }}/>
+        }} />
 
         <motion.div
           initial={{ opacity: 0, y: 32 }}
@@ -299,7 +299,7 @@ const Register = () => {
                 background: "linear-gradient(135deg, #00ff88, #00c96a)",
                 display: "flex", alignItems: "center", justifyContent: "center"
               }}>
-                <Sprout size={18} color="#030a06" strokeWidth={2.5}/>
+                <Sprout size={18} color="#030a06" strokeWidth={2.5} />
               </div>
               <span style={{ fontWeight: 800, fontSize: 17, color: "#e8f5ee" }}>
                 Smart<span style={{ color: "var(--green-glow)" }}>Agri</span>
@@ -326,7 +326,7 @@ const Register = () => {
               {/* Name */}
               <div style={{ position: "relative", marginBottom: 14 }}>
                 <div style={{ position: "absolute", left: 14, top: "50%", transform: "translateY(-50%)", color: "var(--text-muted)", pointerEvents: "none" }}>
-                  <User size={17}/>
+                  <User size={17} />
                 </div>
                 <input
                   type="text" placeholder="Full name"
@@ -338,7 +338,7 @@ const Register = () => {
               {/* Email */}
               <div style={{ position: "relative", marginBottom: 14 }}>
                 <div style={{ position: "absolute", left: 14, top: "50%", transform: "translateY(-50%)", color: "var(--text-muted)", pointerEvents: "none" }}>
-                  <Mail size={17}/>
+                  <Mail size={17} />
                 </div>
                 <input
                   type="email" placeholder="Email address"
@@ -350,7 +350,7 @@ const Register = () => {
               {/* Password */}
               <div style={{ position: "relative", marginBottom: 8 }}>
                 <div style={{ position: "absolute", left: 14, top: "50%", transform: "translateY(-50%)", color: "var(--text-muted)", pointerEvents: "none" }}>
-                  <Lock size={17}/>
+                  <Lock size={17} />
                 </div>
                 <input
                   type={showPass ? "text" : "password"} placeholder="Create password"
@@ -363,7 +363,7 @@ const Register = () => {
                   background: "none", border: "none", cursor: "pointer",
                   color: "var(--text-muted)", padding: 0, display: "flex"
                 }}>
-                  {showPass ? <EyeOff size={17}/> : <Eye size={17}/>}
+                  {showPass ? <EyeOff size={17} /> : <Eye size={17} />}
                 </button>
               </div>
 
@@ -371,16 +371,16 @@ const Register = () => {
               {password && (
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ marginBottom: 20 }}>
                   <div style={{ display: "flex", gap: 4, marginBottom: 5 }}>
-                    {[1,2,3,4].map(n => (
+                    {[1, 2, 3, 4].map(n => (
                       <div key={n} className="strength-bar" style={{
                         background: n <= strength ? strengthColor[strength] : "rgba(255,255,255,0.07)"
-                      }}/>
+                      }} />
                     ))}
                   </div>
                   <p style={{ fontSize: 12, color: strengthColor[strength] }}>{strengthLabel[strength]}</p>
                 </motion.div>
               )}
-              {!password && <div style={{ marginBottom: 20 }}/>}
+              {!password && <div style={{ marginBottom: 20 }} />}
 
               {/* Role selector */}
               <div style={{ marginBottom: 24 }}>
@@ -403,7 +403,7 @@ const Register = () => {
                           color: active ? "var(--green-glow)" : "var(--text-muted)",
                           transition: "all 0.2s"
                         }}>
-                          <Icon size={18}/>
+                          <Icon size={18} />
                         </div>
                         <span style={{
                           fontSize: 13, fontWeight: 700,
@@ -415,7 +415,7 @@ const Register = () => {
                             layoutId="role-check"
                             style={{ position: "absolute", top: 8, right: 8, color: "var(--green-glow)" }}
                           >
-                            <CheckCircle size={14}/>
+                            <CheckCircle size={14} />
                           </motion.div>
                         )}
                       </button>
@@ -448,12 +448,12 @@ const Register = () => {
                       width: 18, height: 18,
                       border: "2px solid rgba(3,10,6,0.3)", borderTop: "2px solid #030a06",
                       borderRadius: "50%", animation: "spin 0.8s linear infinite", display: "inline-block"
-                    }}/>
+                    }} />
                     Creating account…
                   </span>
                 ) : (
                   <span style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
-                    Create Account <ArrowRight size={17}/>
+                    Create Account <ArrowRight size={17} />
                   </span>
                 )}
               </button>
