@@ -359,29 +359,29 @@ export default function FarmerDashboard() {
         <div className="card" style={{ padding: 32 }}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 16px" }}>
             <Field label="Farmer Name">
-              <input placeholder="Your full name" onChange={e => setFarmerName(e.target.value)} className="form-input" />
+              <input value={farmerName} placeholder="Your full name" onChange={e => setFarmerName(e.target.value)} className="form-input" />
             </Field>
             <Field label="Phone Number">
-              <input placeholder="+91 00000 00000" onChange={e => setFarmerPhone(e.target.value)} className="form-input" />
+              <input value={farmerPhone} placeholder="+91 00000 00000" onChange={e => setFarmerPhone(e.target.value)} className="form-input" />
             </Field>
             <Field label="Crop Name">
-              <input placeholder="e.g. Wheat, Rice, Cotton" onChange={e => setCropName(e.target.value)} className="form-input" />
+              <input value={cropName} placeholder="e.g. Wheat, Rice, Cotton" onChange={e => setCropName(e.target.value)} className="form-input" />
             </Field>
             <Field label="Quantity">
-              <input placeholder="e.g. 500 kg" onChange={e => setQuantity(e.target.value)} className="form-input" />
+              <input value={quantity} placeholder="e.g. 500 kg" onChange={e => setQuantity(e.target.value)} className="form-input" />
             </Field>
           </div>
 
           <Field label="Base Price (₹)">
-            <input placeholder="Minimum bid amount" onChange={e => setBasePrice(e.target.value)} className="form-input" style={{ fontFamily: "'Geist Mono',monospace", fontSize: 16 }} />
+            <input value={basePrice} placeholder="Minimum bid amount" onChange={e => setBasePrice(e.target.value)} className="form-input" style={{ fontFamily: "'Geist Mono',monospace", fontSize: 16 }} />
           </Field>
 
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 16px" }}>
             <Field label="Start Time">
-              <input type="datetime-local" onChange={e => setStartTime(e.target.value)} className="form-input" />
+              <input value={startTime} type="datetime-local" onChange={e => setStartTime(e.target.value)} className="form-input" />
             </Field>
             <Field label="End Time">
-              <input type="datetime-local" onChange={e => setEndTime(e.target.value)} className="form-input" />
+              <input value={endTime} type="datetime-local" onChange={e => setEndTime(e.target.value)} className="form-input" />
             </Field>
           </div>
 
@@ -530,13 +530,13 @@ export default function FarmerDashboard() {
       <div style={{ flex: 1, padding: "36px 32px", position: "relative", zIndex: 2, overflowY: "auto" }}>
         <AnimatePresence mode="wait">
           <motion.div key={page} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}>
-            {page === "dashboard" && <DashboardPage />}
-            {page === "createAuction" && <CreateAuctionPage />}
-            {page === "listItems" && <ListingsPage />}
-            {page === "fertilizers" && <FertilizersPage />}
-            {page === "schemes" && <PlaceholderPage title="Government Schemes" icon={<Leaf size={32} />} color="var(--blue)" />}
-            {page === "soil" && <PlaceholderPage title="Soil Analyzer" icon={<Sprout size={32} />} />}
-            {page === "chat" && <PlaceholderPage title="Farmer Chat" icon={<MessageCircle size={32} />} color="var(--purple)" />}
+            {page === "dashboard" && DashboardPage()}
+            {page === "createAuction" && CreateAuctionPage()}
+            {page === "listItems" && ListingsPage()}
+            {page === "fertilizers" && FertilizersPage()}
+            {page === "schemes" && PlaceholderPage({ title: "Government Schemes", icon: <Leaf size={32} />, color: "var(--blue)" })}
+            {page === "soil" && PlaceholderPage({ title: "Soil Analyzer", icon: <Sprout size={32} /> })}
+            {page === "chat" && PlaceholderPage({ title: "Farmer Chat", icon: <MessageCircle size={32} />, color: "var(--purple)" })}
           </motion.div>
         </AnimatePresence>
       </div>
