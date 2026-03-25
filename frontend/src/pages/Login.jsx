@@ -103,6 +103,7 @@ const Login = () => {
       const res = await axios.post("http://localhost:5001/api/auth/login", { email, password });
       const data = res.data;
       localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data.user)); // Store user details
       const roleRoutes = { farmer: "/farmer", buyer: "/buyer", dealer: "/dealer", admin: "/admin" };
       navigate(roleRoutes[data.user.role] || "/");
     } catch (err) {

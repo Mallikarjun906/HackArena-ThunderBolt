@@ -7,6 +7,11 @@
   --color-green-mid: #00c96a;
 }
 
+@keyframes shimmer {
+  0% { transform: translateX(-100%) skewX(-20deg); }
+  100% { transform: translateX(200%) skewX(-20deg); }
+}
+
 :root {
   background-color: var(--color-bg-void);
   color: #fff;
